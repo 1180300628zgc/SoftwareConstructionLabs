@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>FalseDependencyException.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</a> &gt; <a href="../../index.html" class="el_group">Lab4-1170300316</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">exception</a> &gt; <span class="el_source">FalseDependencyException.java</span></div><h1>FalseDependencyException.java</h1><pre class="source lang-java linenums">package exception;
+
+public class FalseDependencyException extends Exception{
+
+	/*
+	 * Atom Structure Prevent electrons being add to a track that does not exist
+	 */
+
+	/*
+	 * Social Network Circle Prevent adding a friend to a social tile before
+	 * declaring it in friends
+	 */
+
+	private String name;
+
+<span class="nc" id="L16">	public FalseDependencyException() {</span>
+
+<span class="nc" id="L18">	}</span>
+
+<span class="nc" id="L20">	public FalseDependencyException(String name) {</span>
+<span class="nc" id="L21">		this.name = new String(name);</span>
+<span class="nc" id="L22">	}</span>
+	
+	public String GetName() {
+<span class="nc" id="L25">		return new String(this.name);</span>
+	}
+	
+	@Override
+	public String getMessage() {
+<span class="nc" id="L30">		return &quot;The object &quot; + GetName() + &quot; has a false dependency relation.&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</div></body></html>

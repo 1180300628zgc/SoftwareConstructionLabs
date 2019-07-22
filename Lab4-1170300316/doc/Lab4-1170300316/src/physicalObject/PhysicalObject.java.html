@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PhysicalObject.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</a> &gt; <a href="../../index.html" class="el_group">Lab4-1170300316</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">physicalObject</a> &gt; <span class="el_source">PhysicalObject.java</span></div><h1>PhysicalObject.java</h1><pre class="source lang-java linenums">package physicalObject;
+
+import java.util.Set;
+
+import extensions.Position;
+
+<span class="fc" id="L7">public abstract class PhysicalObject {</span>
+	protected String name;
+<span class="fc" id="L9">	protected Position position = new Position(0, 0);</span>
+	
+	//Mutability
+	//Both the name and the position can be changed
+	//AF: 
+	//name + position -&gt; PhysicalObject
+	//RI:
+	//The position should be a legal position
+	//Safety from rep:
+	//All variables are set to protected and the field of Physical Objects can only be accessed by methods
+	
+	/**
+	 * Get the name of the obj
+	 * @return name
+	 */
+	public String GetName() {
+<span class="fc" id="L25">		return new String(name);</span>
+	}
+	
+	/**
+	 * Set the name of the obj
+	 * @param name
+	 */
+	public void SetName(String name) {
+<span class="nc" id="L33">		this.name = new String(name);</span>
+<span class="nc" id="L34">	}</span>
+	
+	/**
+	 * Set the pos of the obj
+	 * @param position
+	 * @return true if successfully changed, false if the position is the same as the original
+	 */
+	public boolean SetPosition(Position position) {
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if (this.position.isEqual(position)) {</span>
+<span class="nc" id="L43">			return false;</span>
+		}
+<span class="nc" id="L45">		this.position = position;</span>
+<span class="nc" id="L46">		return true;</span>
+	}
+	
+	/**
+	 * Get the exact position of the obj
+	 * @return position
+	 */
+	public Position GetPosition() {
+<span class="nc" id="L54">		return position;</span>
+	}
+	
+	/**
+	 * Check whether two physicalobjs are of the equal
+	 * @param physicalObject
+	 * @return true if the names are of the same, false if the names are different
+	 */
+	public boolean isEqual(PhysicalObject physicalObject) {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		if (physicalObject.GetName().equals(name)) {</span>
+<span class="nc" id="L64">			return true;</span>
+		}
+<span class="nc" id="L66">		return false;</span>
+	}
+	
+	@Override
+    public boolean equals(Object obj) {
+<span class="fc" id="L71">        PhysicalObject physicalObject = (PhysicalObject)obj;</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        if (physicalObject.GetName().equals(this.name)) {</span>
+<span class="nc" id="L73">			return true;</span>
+		}
+<span class="fc" id="L75">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</div></body></html>

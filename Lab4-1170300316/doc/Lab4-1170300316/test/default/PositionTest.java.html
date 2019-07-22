@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PositionTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</a> &gt; <a href="../../index.html" class="el_group">Lab4-1170300316</a> &gt; <a href="../index.html" class="el_bundle">test</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">PositionTest.java</span></div><h1>PositionTest.java</h1><pre class="source lang-java linenums">import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import extensions.Position;
+
+<span class="nc" id="L7">class PositionTest {</span>
+
+<span class="nc" id="L9">	Position positon = new Position(270, 400);</span>
+
+	@Test
+	void DegreeTest() {
+<span class="nc" id="L13">		assertEquals(40, positon.GetDegree());</span>
+<span class="nc" id="L14">	}</span>
+	
+	@Test
+	void RadiusTest() {
+<span class="nc" id="L18">		assertEquals(270, positon.GetRadius());</span>
+<span class="nc" id="L19">	}</span>
+	
+	@Test
+	void SetPositionTest() {
+<span class="nc" id="L23">		Position newposition = new Position(300, 200);</span>
+<span class="nc" id="L24">		positon.SetPosition(newposition);</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">		assertTrue(positon.GetRadius() == 300);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">		assertTrue(positon.GetDegree() == 200);</span>
+<span class="nc" id="L27">	}</span>
+	
+	@Test
+	void RotateTest() {
+<span class="nc" id="L31">		positon.Rotate(20);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">		assertTrue(positon.GetDegree() == 60);</span>
+<span class="nc" id="L33">	}</span>
+	
+	@Test
+	void isRadiusEqualTest() {
+<span class="nc" id="L37">		Position position2 = new Position(270, 400);</span>
+<span class="nc" id="L38">		Position position3 = new Position(200, 400);</span>
+<span class="nc" id="L39">		assertTrue(positon.isRadiusEqual(position2));</span>
+<span class="nc" id="L40">		assertFalse(positon.isRadiusEqual(position3));</span>
+<span class="nc" id="L41">	}</span>
+	
+	@Test
+	void isEqualTest() {
+<span class="nc" id="L45">		Position position2 = new Position(270, 400);</span>
+<span class="nc" id="L46">		Position position3 = new Position(200, 400);</span>
+<span class="nc" id="L47">		assertTrue(positon.isEqual(position2));</span>
+<span class="nc" id="L48">		assertFalse(positon.isEqual(position3));</span>
+<span class="nc" id="L49">	}</span>
+	
+	@Test
+	void GetStandardXTest() {
+<span class="nc bnc" id="L53" title="All 2 branches missed.">		assertTrue(positon.GetStandardX() &gt; 0);</span>
+<span class="nc" id="L54">	}</span>
+	
+	@Test
+	void GetStandardYTest() {
+<span class="nc bnc" id="L58" title="All 2 branches missed.">		assertTrue(positon.GetStandardY() &gt; 0);</span>
+<span class="nc" id="L59">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</div></body></html>

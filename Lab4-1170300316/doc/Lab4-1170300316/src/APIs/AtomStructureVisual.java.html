@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>AtomStructureVisual.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</a> &gt; <a href="../../index.html" class="el_group">Lab4-1170300316</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">APIs</a> &gt; <span class="el_source">AtomStructureVisual.java</span></div><h1>AtomStructureVisual.java</h1><pre class="source lang-java linenums">package APIs;
+
+import static org.junit.Assert.assertTrue;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Log.LogFile;
+import centralObject.CentralObject;
+import centralObject.Nucleus;
+import circularOrbit.AtomStructure;
+import circularOrbit.CircularOrbit;
+import exception.FalseDependencyException;
+import exception.IllegalNumberException;
+import physicalObject.Atom;
+import physicalObject.Planet;
+import track.Track;
+
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+
+public class AtomStructureVisual extends JFrame {
+
+	private JPanel contentPane;
+<span class="fc" id="L41">	private static CircularOrbit&lt;CentralObject, Track&gt; orbit = CircularOrbit.emptyAtomStructure();</span>
+
+	/**
+	 * Launch the application.
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+
+<span class="fc" id="L49">		Parse();</span>
+
+<span class="fc" id="L51">		EventQueue.invokeLater(new Runnable() {</span>
+			public void run() {
+				try {
+<span class="fc" id="L54">					AtomStructureVisual frame = new AtomStructureVisual();</span>
+<span class="fc" id="L55">					frame.setVisible(true);</span>
+<span class="pc" id="L56">				} catch (Exception e) {</span>
+<span class="nc" id="L57">					e.printStackTrace();</span>
+				}
+<span class="fc" id="L59">			}</span>
+		});
+<span class="fc" id="L61">	}</span>
+
+	/**
+	 * Create the frame.
+	 */
+<span class="fc" id="L66">	public AtomStructureVisual() {</span>
+<span class="fc" id="L67">		setTitle(&quot;Atom Structure&quot;);</span>
+<span class="fc" id="L68">		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L69">		setBounds(100, 100, 960, 640);</span>
+<span class="fc" id="L70">		contentPane = new JPanel();</span>
+<span class="fc" id="L71">		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));</span>
+<span class="fc" id="L72">		setContentPane(contentPane);</span>
+<span class="fc" id="L73">		contentPane.setLayout(null);</span>
+
+<span class="fc" id="L75">		JComboBox comboBox = new JComboBox();</span>
+<span class="fc" id="L76">		comboBox.setBounds(43, 43, 120, 27);</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		for (int i = 0; i &lt; orbit.GetTrack().size(); i++) {</span>
+<span class="fc" id="L78">			comboBox.addItem(String.valueOf(i + 1));</span>
+		}
+<span class="fc" id="L80">		contentPane.add(comboBox);</span>
+
+<span class="fc" id="L82">		JComboBox comboBox_1 = new JComboBox();</span>
+<span class="fc" id="L83">		comboBox_1.setBounds(43, 82, 120, 27);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">		for (int i = 0; i &lt; orbit.GetTrack().size(); i++) {</span>
+<span class="fc" id="L85">			comboBox_1.addItem(String.valueOf(i + 1));</span>
+		}
+<span class="fc" id="L87">		contentPane.add(comboBox_1);</span>
+
+<span class="fc" id="L89">		JButton btnNewButton = new JButton(&quot;JUMP&quot;);</span>
+<span class="fc" id="L90">		btnNewButton.setBounds(43, 121, 120, 29);</span>
+<span class="fc" id="L91">		contentPane.add(btnNewButton);</span>
+
+<span class="fc" id="L93">		orbit.Init(contentPane);</span>
+		/*
+		 * JLabel lblNewLabel_2 = new JLabel(&quot;electron&quot;); lblNewLabel_2.setIcon(new
+		 * ImageIcon(&quot;/Users/tony/Documents/Software Construction/Handin/Lab3-1170300316/lib/AtomStructure/electron.png&quot;
+		 * )); lblNewLabel_2.setBounds(285, 285, 60, 60);
+		 * contentPane.add(lblNewLabel_2);
+		 */
+
+<span class="fc" id="L101">		btnNewButton.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">				for (Track track : orbit.GetTrack()) {</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">					if (track.GetLevel() == Integer.valueOf((String) comboBox.getSelectedItem())) {</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">						for (Track track2 : orbit.GetTrack()) {</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">							if (track2.GetLevel() == Integer.valueOf((String) comboBox_1.getSelectedItem())) {</span>
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">								for (Atom atom : track.getAtomObjects()) {</span>
+<span class="nc" id="L108">									track.RemoveAtomObject(atom);</span>
+<span class="nc" id="L109">									track2.AddAtomObject(atom);</span>
+<span class="nc" id="L110">									contentPane.removeAll();</span>
+<span class="nc" id="L111">									orbit.Init(contentPane);</span>
+
+<span class="nc" id="L113">									JLabel lblNewLabel = new JLabel(&quot;nucleus&quot;);</span>
+<span class="nc" id="L114">									lblNewLabel.setIcon(new ImageIcon(</span>
+<span class="nc" id="L115">											&quot;lib/AtomStructure/nucleus.png&quot;));</span>
+<span class="nc" id="L116">									lblNewLabel.setBounds(450, 290, 60, 60);</span>
+<span class="nc" id="L117">									contentPane.add(lblNewLabel);</span>
+
+									/*
+									 * JLabel lblNewLabel_1 = new JLabel(&quot;track&quot;); lblNewLabel_1.setIcon(new
+									 * ImageIcon(&quot;/Users/tony/Documents/Software Construction/Handin/Lab3-1170300316/lib/AtomStructure/track.png&quot;
+									 * )); lblNewLabel_1.setBounds(307, 185, 383, 313);
+									 * contentPane.add(lblNewLabel_1);
+									 */
+
+<span class="nc" id="L126">									JLabel lblNewLabel_3 = new JLabel(&quot;bg&quot;);</span>
+<span class="nc" id="L127">									lblNewLabel_3.setIcon(new ImageIcon(</span>
+<span class="nc" id="L128">											&quot;lib/AtomStructure/bg.png&quot;));</span>
+<span class="nc" id="L129">									lblNewLabel_3.setBounds(0, 0, 960, 640);</span>
+<span class="nc" id="L130">									contentPane.add(lblNewLabel_3);</span>
+
+<span class="nc" id="L132">									contentPane.updateUI();</span>
+<span class="nc" id="L133">									System.out.println(&quot;Jumped&quot;);</span>
+									break;
+								}
+							}
+						}
+					}
+				}
+<span class="fc" id="L140">			}</span>
+		});
+
+<span class="fc" id="L143">		JLabel lblNewLabel = new JLabel(&quot;nucleus&quot;);</span>
+<span class="fc" id="L144">		lblNewLabel.setIcon(new ImageIcon(</span>
+<span class="fc" id="L145">				&quot;lib/AtomStructure/nucleus.png&quot;));</span>
+<span class="fc" id="L146">		lblNewLabel.setBounds(450, 290, 60, 60);</span>
+<span class="fc" id="L147">		contentPane.add(lblNewLabel);</span>
+
+		/*
+		 * JLabel lblNewLabel_1 = new JLabel(&quot;track&quot;); lblNewLabel_1.setIcon(new
+		 * ImageIcon(&quot;/Users/tony/Documents/Software Construction/Handin/Lab3-1170300316/lib/AtomStructure/track.png&quot;
+		 * )); lblNewLabel_1.setBounds(307, 185, 383, 313);
+		 * contentPane.add(lblNewLabel_1);
+		 */
+
+<span class="fc" id="L156">		JLabel lblNewLabel_3 = new JLabel(&quot;bg&quot;);</span>
+<span class="fc" id="L157">		lblNewLabel_3.setIcon(new ImageIcon(</span>
+<span class="fc" id="L158">				&quot;lib/AtomStructure/bg.png&quot;));</span>
+<span class="fc" id="L159">		lblNewLabel_3.setBounds(0, 0, 960, 640);</span>
+<span class="fc" id="L160">		contentPane.add(lblNewLabel_3);</span>
+<span class="fc" id="L161">	}</span>
+
+	/**
+	 * Assign the reading path
+	 * @throws IOException 
+	 */
+	public static void Parse() throws IOException {
+<span class="fc" id="L168">		String file1 = &quot;src/input/AtomicStructure.txt&quot;;</span>
+		try {
+<span class="fc" id="L170">			readFileByLines(file1);</span>
+<span class="pc" id="L171">		} catch (IllegalNumberException e) {</span>
+			// TODO Auto-generated catch block
+<span class="nc" id="L173">			System.out.println(&quot;Illegal number found in the file. Please check the input file.&quot;);</span>
+<span class="nc" id="L174">			LogFile.WriteError(e);</span>
+<span class="nc" id="L175">			e.printStackTrace();</span>
+<span class="nc" id="L176">		} catch (FalseDependencyException e) {</span>
+			// TODO: handle exception
+<span class="nc" id="L178">			System.out.println(&quot;One or more electrons added to a track that does not exist.&quot;);</span>
+<span class="nc" id="L179">			LogFile.WriteError(e);</span>
+<span class="nc" id="L180">			e.printStackTrace();</span>
+		}
+
+<span class="fc" id="L183">	}</span>
+
+	/**
+	 * Read the files from .txt Build the CircularOrbit
+	 * 
+	 * @param fileName
+	 */
+	private static void readFileByLines(String fileName) throws IllegalNumberException, FalseDependencyException{
+
+<span class="fc" id="L192">		BufferedReader reader = null;</span>
+		// Planet[] planet = new Planet[100];
+
+		try {
+<span class="fc" id="L196">			System.out.println(&quot;Start reading from files.&quot;);</span>
+<span class="fc" id="L197">			reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), &quot;UTF-8&quot;));</span>
+<span class="fc" id="L198">			String tempString = null;</span>
+<span class="fc" id="L199">			int line = 1;</span>
+
+			try {
+<span class="fc bfc" id="L202" title="All 2 branches covered.">				while ((tempString = reader.readLine()) != null) {</span>
+<span class="fc" id="L203">					String temp2 = tempString.replace(&quot; &quot;, &quot;&quot;);</span>
+<span class="pc bpc" id="L204" title="1 of 2 branches missed.">					if (tempString.length() != 0) {</span>
+<span class="fc" id="L205">						System.out.println(&quot;line &quot; + line + &quot;:&quot; + tempString);</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">						if (tempString.startsWith(&quot;ElementName&quot;)) {</span>
+<span class="fc" id="L207">							Pattern regex = Pattern.compile(&quot;::= (.*?)$&quot;);</span>
+<span class="fc" id="L208">							Matcher m = regex.matcher(tempString);</span>
+							
+							//Every param of regular expression must exist
+<span class="fc" id="L211">							assertTrue(m.find());</span>
+							
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">							if (m.find()) {</span>
+<span class="nc" id="L214">								Nucleus nucleus = new Nucleus(m.group(1));</span>
+<span class="nc" id="L215">								System.out.println(m.group(1));</span>
+<span class="nc" id="L216">								orbit.AddObjectToCentre(nucleus);</span>
+							}
+						}
+
+<span class="fc bfc" id="L220" title="All 2 branches covered.">						if (tempString.startsWith(&quot;NumberOfTracks&quot;)) {</span>
+<span class="fc" id="L221">							Pattern regex = Pattern.compile(&quot;::= (.*?)$&quot;);</span>
+<span class="fc" id="L222">							Matcher m = regex.matcher(tempString);</span>
+							
+							//Every param of regular expression must exist
+							
+<span class="pc bpc" id="L226" title="1 of 2 branches missed.">							if (m.find()) {</span>
+								
+<span class="pc bpc" id="L228" title="2 of 4 branches missed.">								if (Integer.valueOf(m.group(1)) &lt;= 0 || m.group(1).contains(&quot;.&quot;)) {</span>
+<span class="nc" id="L229">									throw new IllegalNumberException(Integer.valueOf(m.group(1)));</span>
+								}
+								
+<span class="fc" id="L232">								orbit.SetNumOfTracks(Integer.valueOf(m.group(1)));</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">								for (int i = 0; i &lt; orbit.GetNumOfTracks(); i++) {</span>
+<span class="fc" id="L234">									orbit.AddTrack(new Track(i + 1));</span>
+								}
+								
+<span class="fc" id="L237">								System.out.println(&quot;Track number &quot; + Integer.valueOf(m.group(1)));</span>
+							}
+
+						}
+
+<span class="fc bfc" id="L242" title="All 2 branches covered.">						if (tempString.startsWith(&quot;NumberOfElectron&quot;)) {</span>
+<span class="fc" id="L243">							Pattern regex = Pattern.compile(&quot;::= (.*?)$&quot;);</span>
+<span class="fc" id="L244">							Matcher m = regex.matcher(tempString);</span>
+							
+							//Every param of regular expression must exist
+<span class="fc" id="L247">							assertTrue(m.find());</span>
+												
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">							if (m.find()) {</span>
+<span class="nc" id="L250">								String[] tmpStrings = m.group(1).split(&quot;;&quot;);</span>
+<span class="nc bnc" id="L251" title="All 2 branches missed.">								for (int i = 0; i &lt; tmpStrings.length; i++) {</span>
+<span class="nc" id="L252">									String[] tmpStrings2 = tmpStrings[i].split(&quot;/&quot;);</span>
+									
+<span class="nc bnc" id="L254" title="All 2 branches missed.">									if (Integer.valueOf(tmpStrings2[1]) &gt; orbit.GetNumOfTracks()) {</span>
+<span class="nc" id="L255">										throw new IllegalNumberException(Integer.valueOf(tmpStrings2[1]));</span>
+									}
+									
+<span class="nc bnc" id="L258" title="All 2 branches missed.">									if (Integer.valueOf(tmpStrings2[1]) &gt; orbit.GetNumOfTracks()) {</span>
+<span class="nc" id="L259">										throw new FalseDependencyException(tmpStrings2[1]);</span>
+									}
+									
+<span class="nc bnc" id="L262" title="All 2 branches missed.">									if (tmpStrings2[1].contains(&quot;.&quot;)) {</span>
+<span class="nc" id="L263">										throw new IllegalNumberException(Double.valueOf(tmpStrings2[1]));</span>
+									}
+									
+<span class="nc bnc" id="L266" title="All 2 branches missed.">									for (int j = 0; j &lt; Integer.valueOf(tmpStrings2[1]); j++) {</span>
+<span class="nc" id="L267">										Atom atom = new Atom(Integer.valueOf(tmpStrings2[0]));</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">										for (Track track : orbit.GetTrack()) {</span>
+											
+<span class="nc bnc" id="L270" title="All 2 branches missed.">											if (Integer.valueOf(tmpStrings2[0]) &lt;= 0) {</span>
+<span class="nc" id="L271">												throw new IllegalNumberException(Double.valueOf(Integer.valueOf(tmpStrings2[0])));</span>
+											}
+											
+<span class="nc bnc" id="L274" title="All 2 branches missed.">											if (track.GetLevel() == Integer.valueOf(tmpStrings2[0])) {</span>
+<span class="nc" id="L275">												track.AddAtomObject(atom);</span>
+											}
+										}
+									}
+								}
+							}
+						}
+
+						// ----DEBUG LOG-----//
+<span class="fc bfc" id="L284" title="All 2 branches covered.">						for (int i = 0; i &lt; orbit.GetNumOfTracks(); i++) {</span>
+<span class="fc bfc" id="L285" title="All 2 branches covered.">							for (Track track : orbit.GetTrack()) {</span>
+<span class="fc" id="L286">								System.out.println(</span>
+<span class="fc" id="L287">										&quot;Track Level &quot; + track.GetLevel() + &quot; Number &quot; + track.getAtomObjects().size());</span>
+							}
+						}
+
+<span class="fc" id="L291">						line++;</span>
+					}
+				}
+<span class="pc" id="L294">			} catch (IOException e) {</span>
+				// TODO Auto-generated catch block
+<span class="nc" id="L296">				e.printStackTrace();</span>
+			}
+
+<span class="nc" id="L299">		} catch (UnsupportedEncodingException e) {</span>
+			// TODO Auto-generated catch block
+<span class="nc" id="L301">			e.printStackTrace();</span>
+<span class="nc" id="L302">		} catch (FileNotFoundException e) {</span>
+			// TODO Auto-generated catch block
+<span class="nc" id="L304">			e.printStackTrace();</span>
+		}
+<span class="fc" id="L306">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>CircularOrbitHelper (1) (May 19, 2019 10:19:54 PM)</div></body></html>

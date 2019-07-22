@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="Lab2-1170300316">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse031-2018-12/Eclipse.app/Contents/Eclipse/"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="11"/>
+    <property name="source" value="11"/>
+    <path id="JUnit 5.libraryclasspath">
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.jupiter.api_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.jupiter.engine_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.jupiter.params_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.platform.commons_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.platform.engine_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.platform.launcher_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.platform.runner_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.platform.suite.api_1.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit.vintage.engine_5.3.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.opentest4j_1.1.1.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.apiguardian_1.0.0.v20181005-1442.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
+    <path id="Lab2-1170300316.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <pathelement location="bin"/>
+    </path>
+    <path id="run.Menu.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.FriendshipGraphTest (2).classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.GraphStaticTest.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.GoGUI.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.ConcreteVerticesGraphTest.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.ChessGUI.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.Main (1).classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.ConcreteEdgesGraphTest.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.P1.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.GraphPoetTest.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.MyChessAndGoGame.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.test.P2.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.poet.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.graph.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.MyChessandGoGameTest.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <path id="run.Main (2).classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="Lab2-1170300316.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/P1">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="test/P1">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir=".">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="src/P1/"/>
+                <exclude name="test/P1/"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/P1"/>
+            <src path="test/P1"/>
+            <src path="."/>
+            <exclude name="src/P1/"/>
+            <exclude name="test/P1/"/>
+            <classpath refid="Lab2-1170300316.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Menu">
+        <java classname="src.P3.Menu" failonerror="true" fork="yes">
+            <classpath refid="run.Menu.classpath"/>
+        </java>
+    </target>
+    <target name="FriendshipGraphTest (2)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.P2.FriendshipGraphTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.FriendshipGraphTest (2).classpath"/>
+        </junit>
+    </target>
+    <target name="GraphStaticTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="graph.GraphStaticTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.GraphStaticTest.classpath"/>
+        </junit>
+    </target>
+    <target name="GoGUI">
+        <java classname="src.P3.GoGUI" failonerror="true" fork="yes">
+            <classpath refid="run.GoGUI.classpath"/>
+        </java>
+    </target>
+    <target name="ConcreteVerticesGraphTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="graph.ConcreteVerticesGraphTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ConcreteVerticesGraphTest.classpath"/>
+        </junit>
+    </target>
+    <target name="ChessGUI">
+        <java classname="src.P3.ChessGUI" failonerror="true" fork="yes">
+            <classpath refid="run.ChessGUI.classpath"/>
+        </java>
+    </target>
+    <target name="Main (1)">
+        <java classname="poet.Main" failonerror="true" fork="yes">
+            <classpath refid="run.Main (1).classpath"/>
+        </java>
+    </target>
+    <target name="ConcreteEdgesGraphTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="graph.ConcreteEdgesGraphTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ConcreteEdgesGraphTest.classpath"/>
+        </junit>
+    </target>
+    <target name="P1">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="graph.ConcreteEdgesGraphTest" todir="${junit.output.dir}"/>
+            <test name="graph.ConcreteVerticesGraphTest" todir="${junit.output.dir}"/>
+            <test name="graph.GraphStaticTest" todir="${junit.output.dir}"/>
+            <test name="poet.GraphPoetTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.P1.classpath"/>
+        </junit>
+    </target>
+    <target name="GraphPoetTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="poet.GraphPoetTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.GraphPoetTest.classpath"/>
+        </junit>
+    </target>
+    <target name="MyChessAndGoGame">
+        <java classname="src.P3.MyChessAndGoGame" failonerror="true" fork="yes">
+            <classpath refid="run.MyChessAndGoGame.classpath"/>
+        </java>
+    </target>
+    <target name="test.P2">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.P2.FriendshipGraphTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.test.P2.classpath"/>
+        </junit>
+    </target>
+    <target name="poet">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="poet.GraphPoetTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.poet.classpath"/>
+        </junit>
+    </target>
+    <target name="graph">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="graph.ConcreteEdgesGraphTest" todir="${junit.output.dir}"/>
+            <test name="graph.ConcreteVerticesGraphTest" todir="${junit.output.dir}"/>
+            <test name="graph.GraphStaticTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.graph.classpath"/>
+        </junit>
+    </target>
+    <target name="MyChessandGoGameTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.P3.MyChessandGoGameTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MyChessandGoGameTest.classpath"/>
+        </junit>
+    </target>
+    <target name="Main (2)">
+        <java classname="src.P2.Main" failonerror="true" fork="yes">
+            <classpath refid="run.Main (2).classpath"/>
+        </java>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
